@@ -1,0 +1,1 @@
+angular.module("todoListApp", []); // App name, dependencies (empty means create an app vs look for an existing app)

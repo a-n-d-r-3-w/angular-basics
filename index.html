@@ -5,44 +5,12 @@
 </head>
 <body ng-app="todoListApp"><!-- bootstrap app to this element -->
 
-    <!-- practice custom directive -->
-    <hello-world></hello-world>
-    <div hello-world></div>
-    
-    
-    
-    <div ng-controller='mainCtrl' class='list'><!-- inject controller into element, scope is this div -->
-    
-        <div class='add'>
-            <a href='' ng-click='addTodo()'>+ Add item</a>
-        </div>
+    <todos></todos>
 
-        <div ng-repeat='todo in todos | orderBy: "completed"' 
-            ng-class="{'editing-item': editing, 'edited': todo.edited, 'completed': todo.completed}"
-            ng-init='todo.completed = false'><!-- sort completed items to bottom, initialize 'completed' to false to avoid ambiguous ordering with undefined -->
-        
-            <input ng-model='todo.completed' type='checkbox' />
-            <label ng-hide='editing' class='editing-label'>{{todo.name}}</label>
-            <input ng-show='editing' ng-model='todo.name' 
-                ng-blur='editing = false' ng-change='todo.edited = true'
-                class='editing-label' type='text' /><!-- ng-model binds the element value to an object in the controller scope (two-way data-binding) -->
-        
-            <div class='actions'>
-                <a href='' ng-click='editing = !editing'>edit</a>
-                <a href='' ng-click='saveTodo(todo)'>save</a>
-                <a href='' ng-click='deleteTodo(todo, $index)' class='delete'>delete</a><!-- $index is the position in the todos array -->
-            </div>
-            
-        </div>
-        
-    </div>
-    
-    
-    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/services/data.js"></script>
-    <script src="scripts/hello-world.js"></script>
+    <script src="directives/todos.js"></script>
 </body>
 </html>
